@@ -12,7 +12,7 @@ module Kelvin
     # For some purposes (cooking) °F is still widely used in Canada and other places. This method cannot know
     # your purpose so it will ignore that.
     def self.fahrenheit?
-      locale = ENV["LC_MEASUREMENT"] || ENV["LC_ALL"] || "C"
+      locale = ENV.fetch("LC_MEASUREMENT", ENV.fetch("LC_ALL", "C"))
       FAHRENHEIT_LOCALES.any? { |code| locale.includes?(code) }
     end
 
