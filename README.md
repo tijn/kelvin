@@ -1,5 +1,7 @@
 # Kelvin
 
+[![Build Status](https://travis-ci.org/tijn/kelvin.svg?branch=master)](https://travis-ci.org/tijn/kelvin)
+
 A small library for handling temperatures.
 
 It's as precise as a 64 bit Float.
