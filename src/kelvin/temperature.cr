@@ -72,9 +72,9 @@ module Kelvin
     # Output the temperature in the scale that's default for the current locale settings.
     def to_s(io)
       if Locale.celcius?
-        io << "#{to_celcius.round(1)} °C"
+        io << to_celcius.round(1) << " °C"
       else
-        io << "#{to_fahrenheit.round(1)} °F"
+        io << to_fahrenheit.round(1) << " °F"
       end
     end
 
