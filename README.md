@@ -24,7 +24,8 @@ require "kelvin"
 temperature = Kelvin::Temperature.celcius(22.3)
 puts temperature
 # => "22.3 °C" : String
-# or if you're in the US: "72.1 °F" : String
+# or if you're in the US, it will output: "72.1 °F" : String
+# It follows the LOCALE settings on your system.
 
 puts temperature.to_kelvin
 # => 295.45
@@ -46,7 +47,7 @@ and you can use it to compare temperatures on different scales.
 temperature_in_paris = Kelvin::Temperature.parse("22.3 °C")
 temperature_in_boston = Kelvin::Temperature.parse("70.1 °F")
 
-city = (celcius > fahrenheit) ? "Paris" : "Boston"
+city = (temperature_in_paris > temperature_in_boston) ? "Paris" : "Boston"
 puts "#{city} is warmer today"
 ```
 
