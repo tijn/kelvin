@@ -26,14 +26,31 @@ module Kelvin
       celcius(100.0)
     end
 
-    # The freezing point of water
+    # :ditto:
+    def self.water_boiling_point
+      celcius(100.0)
+    end
+
+    # The freezing point of water; 0 °C
     def self.freezing_point
+      celcius(0.0)
+    end
+
+    # :ditto:
+    def self.water_freezing_point
       celcius(0.0)
     end
 
     # absolute zero. -273.15 °C.
     def self.zero
       new
+    end
+
+    # Triple point of water; 0.01 °C
+    #
+    # See: https://en.wikipedia.org/wiki/Triple_point
+    def self.water_triple_point
+      new(273.16)
     end
 
     # Returns a new `Temperature` by parsing *string*.
