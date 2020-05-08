@@ -8,7 +8,7 @@ describe Kelvin::Parser do
   end
 
   it "can parse our own output" do
-    Kelvin::Parser.parse(Kelvin::Temperature.body_temperature.to_s).should eq(Kelvin::Temperature.body_temperature)
+    Kelvin::Parser.parse(Kelvin::Temperature.boiling_point.to_s).should eq(Kelvin::Temperature.boiling_point)
   end
 
   it "does not parse 10°°F" do

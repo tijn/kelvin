@@ -21,7 +21,7 @@ module Kelvin
       new((degrees_fahrenheit + 459.67) * 5.0 / 9.0)
     end
 
-    # The boiling point of water (under precisely defined circumstances)
+    # The boiling point of water (under precisely defined circumstances); 100 °C
     def self.boiling_point
       celcius(100.0)
     end
@@ -34,11 +34,6 @@ module Kelvin
     # absolute zero. -273.15 °C.
     def self.zero
       new
-    end
-
-    # 37.0 °C.
-    def self.body_temperature
-      celcius(37.0)
     end
 
     # Returns a new `Temperature` by parsing *string*.
