@@ -7,6 +7,10 @@ module Kelvin
     def initialize(@kelvin : Float = 0.0)
     end
 
+    def self.new(kelvin)
+      new(kelvin.to_f)
+    end
+
     # Make a new `Temperature` using a reading in degrees Celcius.
     def self.celcius(degrees_celcius : Float)
       new(degrees_celcius + 273.15)
@@ -90,12 +94,31 @@ module Kelvin
     # ```
     # The reason for this is that its only meaningful to add or subtract temperatures in Kelvin.
     def +(other)
-      self.class.new(to_f + other.to_f)
+      build_new(to_f + other.to_f)
     end
 
     # Subtract *other* from `self`. Returns a new Temperature. The remarks for `+` apply here too.
     def -(other)
       self.+(-other.to_f)
+    end
+
+    # Multiply the temperature by a factor.
+    # Note that the outcome may be very different from what you might expect:
+    # ```
+    # Temperature.parse("10 °C") * 2 # => XXXX
+    # ```
+    #
+    def *(factor)
+      build_new(to_f * factor.to_f)
+    end
+
+    # Subtract *other* from `self`. Returns a new Temperature. The remarks for `+` apply here too.
+    def /(divisor)
+      build_new(to_f / divisor.to_f)
+    end
+
+    private def build_new(temperature)
+      self.class.new(temperature)
     end
   end
 end

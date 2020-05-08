@@ -12,7 +12,6 @@ module Kelvin
     # For some purposes (cooking) °F is still widely used in Canada and other places. This method cannot know
     # your purpose so it will ignore that.
     def self.fahrenheit?
-      locale = ENV["LC_MEASUREMENT"]? || ENV["LC_ALL"]? || "C"
       FAHRENHEIT_LOCALES.any? { |code| locale.includes?(code) }
     end
 
@@ -21,6 +20,11 @@ module Kelvin
     # The opposite `#fahrenheit?`
     def self.celcius?
       !fahrenheit?
+    end
+
+    # returns the locale that we use to determine the preferred temperature scale.
+    def self.locale
+      ENV["LC_MEASUREMENT"]? || ENV["LC_ALL"]? || "C"
     end
   end
 end
