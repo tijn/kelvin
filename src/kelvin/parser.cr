@@ -15,7 +15,7 @@ module Kelvin
       new(string).parse
     end
 
-    # :nodoc
+    # :nodoc:
     def parse
       string = @string.strip.delete(' ')
       if string.ends_with? "°C"
