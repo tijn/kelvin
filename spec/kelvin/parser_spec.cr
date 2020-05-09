@@ -8,12 +8,26 @@ describe Kelvin::Parser do
   end
 
   it "can parse our own output" do
-    Kelvin::Parser.parse(Kelvin::Temperature.boiling_point.to_s).should eq(Kelvin::Temperature.boiling_point)
+    one = Kelvin::Temperature.boiling_point
+    two = Kelvin::Parser.parse(one.to_s)
+    two.to_f.should be_close(one.to_f, 0.1)
   end
 
-  it "does not parse 10°°F" do
-    expect_raises(ArgumentError) do
-      Kelvin::Parser.parse("10°°F")
+  describe "parsing evil strings designed to break it" do
+    it "does not parse strings with double °-signs" do
+      expect_raises(ArgumentError) do
+        Kelvin::Parser.parse("10°°F")
+      end
+    end
+
+    it "does not parse strings with double signs" do
+      expect_raises(ArgumentError) do
+        Kelvin::Parser.parse("10 °F°F")
+      end
+
+      expect_raises(ArgumentError) do
+        Kelvin::Parser.parse("10 °C°C")
+      end
     end
   end
 end
